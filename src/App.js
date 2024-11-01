@@ -1,24 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import TodoTable from "./componet/TodoTable";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 function App() {
+    const [todoModel,setTodo] = useState([]);
+    useEffect(() => {
+        const fetData = async ()=>{
+            const respone = await axios.get("http://localhost:8080/api/v1/todos")
+            setTodo(respone.data);
+        }
+        fetData();
+    }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="mt-5 container">
+        <div className="card">
+          <div className="card-header">
+            Your Todo
+          </div>
+          <div className="card-body">
+            <TodoTable todos={todoModel}/>
+          </div>
+        </div>
+      </div>
   );
 }
 
