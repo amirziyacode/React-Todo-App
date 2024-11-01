@@ -7,8 +7,8 @@ function App() {
     const [todoModel,setTodo] = useState([]);
     useEffect(() => {
         const fetData = async ()=>{
-            const respone = await axios.get("http://localhost:8080/api/v1/todos")
-            setTodo(respone.data);
+            const response = await axios.get("http://localhost:8080/api/v1/todos")
+            setTodo(response.data);
         }
         fetData();
     }, []);
