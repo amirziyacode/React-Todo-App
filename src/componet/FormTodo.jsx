@@ -1,12 +1,21 @@
 import {useState} from "react";
+import axios from "axios";
 
 
 function FormTodo(){
     const [title,setTitle] = useState("");
     const [description,setDescription] = useState("");
-    const submit = ()=>{
+    const isDo = false;
+    const submit = async ()=>{
         if(description != null && title != null){
-
+            const postData = await axios.post("http://localhost:8080/api/v1/todos", {
+                title,
+                description,
+                isDo,
+        }).then((response) => {
+                console.log(response.status, response.data.token);
+            });
+            window.location.reload();
         }
     }
     return (
@@ -20,7 +29,7 @@ function FormTodo(){
                 <textarea className="form-control" required value={description} rows={3} onChange={e =>
                     setDescription(e.target.value)}></textarea>
             </div>
-            <button className="btn btn-primary mt-3">Add Todo</button>
+            <button className="btn btn-primary mt-3" onClick={submit}>Add Todo</button>
         </div>
     )
 }
