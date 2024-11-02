@@ -8,8 +8,8 @@ function App() {
     const [todoModel,setTodo] = useState([]);
     useEffect(() => {
         const fetData = async ()=>{
-            // const response = await axios.get("http://localhost:8080/api/v1/todos")
-            // setTodo(response.data);
+            const response = await axios.get("http://localhost:8080/api/v1/todos")
+            setTodo(response.data);
         }
         fetData();
     }, []);
@@ -20,7 +20,7 @@ function App() {
                   Your Todo
               </div>
               <div className="card-body">
-                  {todoModel == null ? <TodoTable todos={todoModel}/> : <h2 className="Load">Loading !! </h2>}
+                  <TodoTable todos={todoModel}/>
                   <FormTodo/>
               </div>
           </div>

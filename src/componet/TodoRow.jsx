@@ -1,8 +1,8 @@
 
-function TodoRow(props = {rowDescription:String,rowTitle:String}) {
+function TodoRow(props = {rowId:Number,rowDescription:String,rowTitle:String}) {
     return (
         <tr>
-            <th scope="row">1</th>
+            <th scope="row">{props.rowId}</th>
             <td>{props.rowTitle}</td>
             <td>{props.rowDescription}</td>
         </tr>
