@@ -8,7 +8,7 @@ function FormTodo(){
     const isDo = false;
     const submit = async ()=>{
         if(description != null && title != null){
-            const postData = await axios.post("http://localhost:8080/api/v1/todos", {
+           await axios.post("http://localhost:8080/api/v1/todos", {
                 title,
                 description,
                 isDo,

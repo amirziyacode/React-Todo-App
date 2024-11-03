@@ -14,7 +14,7 @@ function TodoTable(props = {todos:[]}){
             <tbody>
             {props.todos.map(
                 todo => (
-                    <TodoRow rowId={todo.id} rowTitle={todo.title} rowDescription={todo.description}/>
+                    <TodoRow key={todo.id} rowId={todo.id} rowTitle={todo.title} rowDescription={todo.description}/>
                 )
             )}
             </tbody>
