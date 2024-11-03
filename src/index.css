@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  background: black;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -13,4 +14,15 @@ code {
 }
 .Load{
   padding-left: 500px;
+}
+.card-body{
+  background: #1c1818;
+}
+.form-lable{
+  color: white;
+}
+.card-header{
+  background: #1c1818;
+  color: white;
+  font-size: 30px;
 }
