@@ -10,6 +10,7 @@ function TodoTable(props = {todos:[]}){
                     <th scope="col">#</th>
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Operations</th>
                 </tr>
                 </thead>
                 <tbody>

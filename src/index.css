@@ -26,3 +26,9 @@ code {
   color: white;
   font-size: 30px;
 }
+.buttons{
+  margin-left: 10px ;
+}
+#updateButton{
+  margin-left: 20px;
+}
