@@ -6,12 +6,10 @@ import FormTodo from "./componet/FormTodo";
 
 function App() {
     const [todoModel,setTodo] = useState([]);
-    useEffect(() => {
-        const fetData = async ()=>{
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(async () => {
             const response = await axios.get("http://localhost:8080/api/v1/todos")
             setTodo(response.data);
-        }
-        fetData();
     }, []);
   return (
       <div className="mt-5 container">
