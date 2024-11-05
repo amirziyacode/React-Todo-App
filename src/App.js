@@ -20,7 +20,7 @@ function App() {
             const response = await axios.get("http://localhost:8080/api/v1/todos")
             setTodo(response.data);
         }
-        // fetchData();
+        fetchData();
     }, []);
   return (
       <div className="mt-5 container">
