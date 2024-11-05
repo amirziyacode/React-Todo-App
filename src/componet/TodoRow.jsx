@@ -9,12 +9,10 @@ function TodoRow(props = {rowId:Number,rowDescription:String,rowTitle:String}) {
     }
     const [showLogin, setShowLogin] = useState(false);
 
-    // نمایش پنجره لاگین
     const handleShowLogin = () => {
         setShowLogin(true);
     };
 
-    // مخفی‌سازی پنجره لاگین
     const handleCloseLogin = () => {
         setShowLogin(false);
     };
@@ -45,7 +43,7 @@ function TodoRow(props = {rowId:Number,rowDescription:String,rowTitle:String}) {
                             <div className="popup-content">
                                 <span className="close" onClick={handleCloseLogin}>&times;</span>
                                 <h2>Add Todo</h2>
-                                <UpdateForm id={props.rowId}/>
+                                <UpdateForm id={props.rowId} description={props.rowDescription} title={props.rowTitle}/>
                             </div>
                         </div>
                     )}
