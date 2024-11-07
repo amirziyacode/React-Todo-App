@@ -2,13 +2,16 @@ import axios from "axios";
 import {useState} from "react";
 import UpdateForm from "./UpdateForm";
 
-function TodoRow(props = {rowId:Number,rowDescription:String,rowTitle:String}) {
+function TodoRow(props = {rowId:Number,rowDescription:String,rowTitle:String,do:Boolean}) {
     const deleteFun = async () => {
         await axios.delete(`http://localhost:8080/api/v1/todos/${props.rowId}`)
         window.location.reload();
     }
     const [showLogin, setShowLogin] = useState(false);
-
+    const[,setDo]= useState(false);
+    const doIt = () => {
+        setDo(props.do)
+    } 
     const handleShowLogin = () => {
         setShowLogin(true);
     };
@@ -17,7 +20,7 @@ function TodoRow(props = {rowId:Number,rowDescription:String,rowTitle:String}) {
         setShowLogin(false);
     };
     return (
-        <tr>
+        <tr >
             <th scope="row">
                 <div className="mt-1">
                     {props.rowId}
@@ -35,21 +38,31 @@ function TodoRow(props = {rowId:Number,rowDescription:String,rowTitle:String}) {
             </td>
             <td>
                 <div className="buttons">
-                    <button type="button" className="btn btn-outline-danger btn-sm" onClick={deleteFun}>Delete</button>
-                    <button type="button"  id="updateButton" className="btn btn-outline-primary btn-sm" onClick={handleShowLogin}>Update</button>
+                    {props.do === false ?    
+                    <button type="button"  id="do" className="btn btn-outline-danger btn-sm" onClick={doIt}>NotDo</button> :
+                    <button type="button" id="do" className="btn btn-success btn-sm" onClick={doIt}>Done</button>}
+
+                    <button type="button" className="btn btn-danger btn-sm" onClick={deleteFun}>Delete</button>
+                    <button type="button" id="updateButton" className="btn btn-primary btn-sm"
+                            onClick={handleShowLogin}>Update
+                    </button>
+                    
                     <div className="App">
-                    {showLogin && (
-                        <div className="popup">
-                            <div className="popup-content">
-                                <span className="close" onClick={handleCloseLogin}>&times;</span>
-                                <h2>Add Todo</h2>
-                                <UpdateForm id={props.rowId} description={props.rowDescription} title={props.rowTitle}/>
+                        {showLogin && (
+                            <div className="popup">
+                                <div className="popup-content">
+                                    <span className="close" onClick={handleCloseLogin}>&times;</span>
+                                    <h2>Add Todo</h2>
+                                    <UpdateForm id={props.rowId} description={props.rowDescription}
+                                                title={props.rowTitle}/>
+                                </div>
                             </div>
-                        </div>
-                    )}
+                        )}
                     </div>
                 </div>
+
             </td>
+
         </tr>
     )
 }
