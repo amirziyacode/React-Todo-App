@@ -7,7 +7,7 @@ function FormTodo(){
     const [description,setDescription] = useState("");
     const isDo = false;
     const submit = async ()=>{
-        if(description != null && title != null){
+        if(description != null || title != null){
            await axios.post("http://localhost:8080/api/v1/todos", {
                 title,
                 description,
@@ -16,6 +16,8 @@ function FormTodo(){
                 console.log(response.status, response.data.token);
             });
             window.location.reload();
+        }else{
+            alert("Title and Description cannot be empty !!! ")
         }
     }
     return (

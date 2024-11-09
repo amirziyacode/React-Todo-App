@@ -7,8 +7,13 @@ function TodoRow(props = {rowId:Number,rowDescription:String,rowTitle:String,do:
         await axios.delete(`http://localhost:8080/api/v1/todos/${props.rowId}`)
         window.location.reload();
     }
+    const setDo = async () => {
+        var isdo = !props.do; 
+        console.log(isdo);
+        await axios.put(`http://localhost:8080/api/v1/todos/do/${props.rowId}`,isdo);
+        window.location.reload();
+    }
     const [showLogin, setShowLogin] = useState(false);
-    const[,setDo]= useState(false);
     const doIt = () => {
         setDo(props.do)
     } 
@@ -39,8 +44,8 @@ function TodoRow(props = {rowId:Number,rowDescription:String,rowTitle:String,do:
             <td>
                 <div className="buttons">
                     {props.do === false ?    
-                    <button type="button"  id="do" className="btn btn-outline-danger btn-sm" onClick={doIt}>NotDo</button> :
-                    <button type="button" id="do" className="btn btn-success btn-sm" onClick={doIt}>Done</button>}
+                    <button type="button"  id="do" className="btn btn-outline-danger btn-sm" onClick={setDo}>NotDo</button> :
+                    <button type="button" id="do" className="btn btn-success btn-sm" onClick={setDo}>Done !</button>}
 
                     <button type="button" className="btn btn-danger btn-sm" onClick={deleteFun}>Delete</button>
                     <button type="button" id="updateButton" className="btn btn-primary btn-sm"
