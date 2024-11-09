@@ -7,7 +7,7 @@ function FormTodo(){
     const [description,setDescription] = useState("");
     const isDo = false;
     const submit = async ()=>{
-        if(description != null || title != null){
+        if(description !== "" && title !== ""){
            await axios.post("http://localhost:8080/api/v1/todos", {
                 title,
                 description,

@@ -10,7 +10,9 @@ function TodoRow(props = {rowId:Number,rowDescription:String,rowTitle:String,do:
     const setDo = async () => {
         var isdo = !props.do; 
         console.log(isdo);
-        await axios.put(`http://localhost:8080/api/v1/todos/do/${props.rowId}`,isdo);
+        await axios.put(`http://localhost:8080/api/v1/todos/do/${props.rowId}`,{
+            "do": isdo
+        });
         window.location.reload();
     }
     const [showLogin, setShowLogin] = useState(false);
