@@ -39,7 +39,7 @@ https://github.com/user-attachments/assets/dc36eec4-d4d2-4f26-98c7-d4ebc372d861
 
 
 
-eate React App
+create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
